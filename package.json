@@ -10,7 +10,7 @@
     "네이버",
     "네이버 로그인"
   ],
-  "version": "0.1.0",
+  "version": "0.1.1-alpha.1",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "dependencies": {
