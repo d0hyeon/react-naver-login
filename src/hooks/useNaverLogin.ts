@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {INaverLoginProperties} from '../@types/naverLogin';
 import {NAVER_SCRIPT_SRC} from '../lib/constants';
-import loopTimeout from '../lib/loopTimeout';
+import { createScript } from '../lib/createScript';
 
 declare global {
   interface Window {
@@ -17,20 +17,6 @@ interface IUserNaverLoginResult {
 }
 
 type TUserNaverLogin = (parameter: INaverLoginProperties) => null | IUserNaverLoginResult;
-
-const createScript = (callback?: () => void) => {
-  const currentScript = document.querySelector(`script[src='${NAVER_SCRIPT_SRC}']`);
-  const script: any = currentScript ?? document.createElement('script');
-  
-  if(!currentScript) {
-    script.src = NAVER_SCRIPT_SRC;
-    document.body.appendChild(script);
-  }
-
-  script.addEventListener('load', () => {
-    callback && callback();
-  });
-};
 
 const useNaverLogin:TUserNaverLogin = ({
   clientId,
@@ -64,24 +50,12 @@ const useNaverLogin:TUserNaverLogin = ({
   }, [isLoadedScript]);
 
   React.useEffect(() => {
-    let timerId: number = 0;
     if(!isLoadedScript) {
-      createScript(() => {
-        timerId = loopTimeout(() => {
-          if(window?.naver?.LoginWithNaverId) {
-            setIsLoadedScript(true);
-            return true;
-          } 
-
-          return false;
-        }, 500);
-      });
+      createScript(NAVER_SCRIPT_SRC)
+        .then(() => {
+          setIsLoadedScript(true);  
+        })
     }
-
-    return () => {
-      timerId && clearTimeout(timerId);
-      setIsLoadedScript(true)
-    };
   }, [isLoadedScript]);
   
   return {
