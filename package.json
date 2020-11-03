@@ -1,0 +1,59 @@
+{
+  "name": "@dohyeon/react-naver-login",
+  "description": "네이버 로그인 컴포넌트",
+  "keywords": [
+    "react",
+    "react component",
+    "react hooks",
+    "react naver login",
+    "naver",
+    "네이버",
+    "네이버 로그인"
+  ],
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "dependencies": {
+    "react-is": "^17.0.1",
+    "styled-components": "5.1.1"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@types/react": "^16.9.15",
+    "@types/styled-components": "^5.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rollup": "^2.21.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "typescript": "^3.9.6"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:badges": "jest --coverage && jest-coverage-badges"
+  },
+  "bugs": {
+    "email": "ehgus6887@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d0hyeon/react-naver-login"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "김도현",
+    "email": "ehgus6887@gmail.com"
+  },
+  "files": [
+    "dist"
+  ]
+}
