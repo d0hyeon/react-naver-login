@@ -1,16 +1,7 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import {INaverLoginProperties} from '../@types/naverLogin';
 import useNaverLogin from '../hooks/useNaverLogin';
-
-const NaverLoginDiv = styled.div<{hide: boolean}>`
-  ${({hide}) => hide && `
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    opacity: 0;
-  `}
-`
+import './default.css';
 
 const NaverLogin: React.FC<INaverLoginProperties> = ({
   clientId,
@@ -56,12 +47,12 @@ const NaverLogin: React.FC<INaverLoginProperties> = ({
           </div>
         </>  
       )}
-      <NaverLoginDiv hide={!!children}>
+      <div className={children ? 'hide' : ''}>
         <div 
           id="naverIdLogin"
           ref={buttonRef}
         />
-      </NaverLoginDiv>
+      </div>
     </>
   )
 };
